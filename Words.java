@@ -4,31 +4,35 @@ import java.util.Collections;
 
 public class Words
 {
+	//instance variable
 	private ArrayList<Word> wordList;
 
+	//default constructor
 	public Words()
 	{
-		list= new ArrayList<wordList>();
+		wordList= new ArrayList<Word>();
 	}
 
+	//modified constructor
 	public Words(String s)
 	{
-		list = new ArrayList<wordList>();
+		wordList = new ArrayList<Word>();
 
-		setList(s);
+		//filter the parameter
+		setWords(s);
 	}
 
 	public void setWords(String s)
 	{
 		//Create a Scanner for the list of words in the string "s"
-		list.clear();
+		wordList.clear();
 
 		Scanner unc = new Scanner(s);
 
 		//Continue to loop while there are more words to read
 		while (unc.hasNext())
 		{
-			list.add(new wordList(unc.nextInt()));
+			wordList.add(new Word(unc.next()));
 		}
 			//Add objects of the type Word to our ArrayList "wordList"
 
@@ -40,8 +44,9 @@ public class Words
 		int count=0;
 
 		//for every Word in the ArrayList "wordList"
-			for (wordList Word : list)
-				if (Word.length==size)
+			for (Word theWord : wordList)
+				if (theWord.getLength()==size)
+					count++;
 
 
 			//if the length of the "theWord" is the same as the parameter "size"
@@ -56,10 +61,21 @@ public class Words
 		int vowelCount = 0;
 
 		//for each Word in the ArrayList "words" loop
-		for (wordList word : list)
+		for (int i= wordList.size()-1;i>0;i--)
+		{
 			
 			//if the Word has "size" characters
+			if (wordList.get(i).getNumVowels()>-1)
+			{
+				vowelCount++;
+			}
+			if (wordList.get(i).getLength()==size)
+			{
+				wordList.remove(i);
+			}
 
+		}
+			
 
 		return vowelCount;
 	}
@@ -69,7 +85,9 @@ public class Words
 		int count=0;
 
 		//for every Word in the ArrayList "words"
-
+		for (Word words: wordList)
+			if (words.getNumVowels()==numVowels)
+			count++;
 			//if the number of vowels in "theWord" is the same as the parameter "numVowels"
 
 

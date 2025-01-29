@@ -29,8 +29,8 @@ public class Word
 
 		int count = 0;
 		//Loop for every letter in "word"
-		 	for (int i = word.length()-1; i=0; i--)
-				if(word.indexOf(VOWELS))
+		 for (int i=0; i< word.length(); i++)
+				if (VOWELS.indexof(word.substring(i,i+1)))
 				count++;
 
 		return count;
